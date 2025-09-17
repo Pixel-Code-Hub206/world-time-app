@@ -10,22 +10,30 @@ class WorldTime{
   WorldTime({required this.location, required this.time, required this.flag, required this.url});
 
  Future<void> getTime() async{
-  //Making the request to get data
-  Response response = await get(Uri.parse("https://timeapi.io/api/time/current/zone?timeZone=$url"));  //Asia%2FKolkata
-  Map data = jsonDecode(response.body);
 
-  //Saving the time-data in a more readable format
-  String datetime = data['dateTime'];
-  String timeZone = data['timeZone'];
-  //Printing the time-api data
+   try{
+     //Making the request to get data
+     Response response = await get(Uri.parse("https://timeapi.io/api/time/current/zone?timeZone=$url"));  //Asia%2FKolkata
+     Map data = jsonDecode(response.body);
 
-  //print(data);
-  //print('$datetime - $timeZone');
+     //Saving the time-data in a more readable format
+     String datetime = data['dateTime'];
+     String timeZone = data['timeZone'];
+     //Printing the time-api data
 
-  //Create a Datetime Object
-  DateTime now = DateTime.parse(datetime);  //A much neater dateTime format
-  now = now.add(Duration(hours: 0));
-  time = now.toString();  //Setting the time property
+     //print(data);
+     //print('$datetime - $timeZone');
+
+     //Create a Datetime Object
+     DateTime now = DateTime.parse(datetime);  //A much neater dateTime format
+     now = now.add(Duration(hours: 0));
+     time = now.toString();  //Setting the time property
+   }
+   catch(e)
+   {
+     print("Caught error:$e");  //Print the Error in the console
+     time = "Error: Could not fetch Time Data";   //Passing the error over the UI
+   }
 }
 
 }

@@ -34,7 +34,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold( 
       body: Padding(
           padding: EdgeInsets.all(50.0),
-        child: Text(time),    //Displays the final time over the screen
+        child: Text(time),    //Displays the final time over the UI screen
       ),
     );
   }
