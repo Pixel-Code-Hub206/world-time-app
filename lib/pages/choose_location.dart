@@ -22,7 +22,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
       ),
       body: TextButton(
         onPressed: () {},
-        child: Text('counter is suspended'),
+        child: Text('Counter is suspended'),
         style: TextButton.styleFrom(
           backgroundColor: Colors.grey,
           textStyle: TextStyle(
