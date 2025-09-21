@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:world_time/services/world_time.dart';
+import 'package:world_time/services/world_time.dart';   //To fetch the actual time
+import 'package:flutter_spinkit/flutter_spinkit.dart';  //To create a pre-built spinner animation
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -29,16 +30,19 @@ class _LoadingState extends State<Loading> {
     super.initState();
     setUpWorldTime();
 
-    print('Lets check the time!');
+    print('Lets check the time!');  //Checking Console response
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
-      body: Padding(
-          padding: EdgeInsets.all(50.0),
-        child: Text('Loading..'),    //Displays the final time over the UI screen
-      ),
+    return Scaffold(
+      backgroundColor: Colors.blueGrey[800],
+      body: Center(
+        child: SpinKitFoldingCube(      //Function to call the spinner animation
+          color: Colors.white,
+          size: 50.0,
+        ),
+      )
     );
   }
 }
