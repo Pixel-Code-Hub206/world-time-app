@@ -1,5 +1,6 @@
-import 'package:http/http.dart';
-import 'dart:convert';
+import 'package:http/http.dart';  //To fetch API endpoints
+import 'dart:convert';    //To convert the fetched data
+import 'package:intl/intl.dart';  //To change the date-time format
 
 class WorldTime{
   String location;  //Location name for the UI
@@ -26,8 +27,8 @@ class WorldTime{
 
      //Create a Datetime Object
      DateTime now = DateTime.parse(datetime);  //A much neater dateTime format
-     now = now.add(Duration(hours: 0));
-     time = now.toString();  //Setting the time property
+     now = now.add(Duration(hours: 0)); //No affect
+     time = DateFormat.jm().format(now);  //Setting the time property in a readable format
    }
    catch(e)
    {

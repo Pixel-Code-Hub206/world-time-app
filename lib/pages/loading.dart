@@ -10,10 +10,10 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-  String time = 'Loading Time...';
+  String time = 'Null...';  //Just a placeholder
   void setUpWorldTime() async
   {
-    WorldTime instance = WorldTime(location: 'Kolkata', time: "", flag: 'india.png', url: 'Asia%2FKolkata');    //Parameters to get time and flag data for the locations
+    WorldTime instance = WorldTime(location: 'India', time: "", flag: 'india.png', url: 'Asia%2FKolkata');    //Parameters to get time and flag data for the locations
     await instance.getTime();   //Gets the actual time
     print(instance.time);  //Prints the time in the console (Just for the output confirmation)
 
