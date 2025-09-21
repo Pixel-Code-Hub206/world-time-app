@@ -17,43 +17,66 @@ class _HomeState extends State<Home> {
     data = ModalRoute.of(context)?.settings.arguments as Map? ?? {};  //Taking the data arguments with a null safety check
     print(data);
 
+    //Setting background based on the time
+    String bgImage = data['isDayTime'] ? 'day.png' : 'night.png';
+    Color bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo[700]!;
+
     return Scaffold(
-      body: SafeArea(child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
-        child: Column(
-          children: [
-            TextButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/location');
-              },
-              label: Text('Edit Location'),
-              icon: Icon(Icons.edit_location),
-            ),
-
-            SizedBox(height: 20.0),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                    data['location'],
+      backgroundColor: bgColor,
+      body: SafeArea(child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/$bgImage'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+          child: Column(
+            children: [
+              TextButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/location');
+                },
+                label: Text(
+                    'Edit Location',
                   style: TextStyle(
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2.0,
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-
-            Text(
-              data['time'],
-              style: TextStyle(
-                fontSize: 64.0,
+                icon: Icon(
+                    Icons.edit_location,
+                  color: Colors.white,
+                ),
               ),
-            ),
-          ],
+        
+              SizedBox(height: 20.0),
+        
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                      data['location'],
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.0),
+        
+              Text(
+                data['time'],
+                style: TextStyle(
+                  fontSize: 64.0,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       )),
     );

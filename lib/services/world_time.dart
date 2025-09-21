@@ -7,8 +7,9 @@ class WorldTime{
   String time;  //Time of the location
   String flag;  //Url to an asset flag icon
   String url;   //Url to the actual location
+  bool isDayTime; //Whether it day time or night time
 
-  WorldTime({required this.location, required this.time, required this.flag, required this.url});
+  WorldTime({required this.location, required this.time, required this.flag, required this.url, required this.isDayTime});
 
  Future<void> getTime() async{
 
@@ -27,7 +28,9 @@ class WorldTime{
 
      //Create a Datetime Object
      DateTime now = DateTime.parse(datetime);  //A much neater dateTime format
-     now = now.add(Duration(hours: 0)); //No affect
+     // now = now.add(Duration(hours: 0)); //No affect unless offset is required
+
+     isDayTime = (now.hour >= 6 && now.hour <= 19) ? true : false;    //Checking the time before making it more readable
      time = DateFormat.jm().format(now);  //Setting the time property in a readable format
    }
    catch(e)

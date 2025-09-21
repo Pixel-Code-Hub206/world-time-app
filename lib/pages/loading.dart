@@ -14,14 +14,15 @@ class _LoadingState extends State<Loading> {
   String time = 'Null...';  //Just a placeholder
   void setUpWorldTime() async
   {
-    WorldTime instance = WorldTime(location: 'India', time: "", flag: 'india.png', url: 'Asia%2FKolkata');    //Parameters to get time and flag data for the locations
-    await instance.getTime();   //Gets the actual time
+    WorldTime instance = WorldTime(location: 'India', time: "", flag: 'india.png', url: 'Asia%2FKolkata', isDayTime: true);    //Parameters to get time and flag data for the locations
+    await instance.getTime();   //Gets the actual time data back
     print(instance.time);  //Prints the time in the console (Just for the output confirmation)
 
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location' : instance.location,
       'time' : instance.time,
       'flag' : instance.flag,
+      'isDayTime' : instance.isDayTime,
     });   //Pushing the data into the Home Page and traversing with it
   }
 
@@ -42,7 +43,7 @@ class _LoadingState extends State<Loading> {
           color: Colors.white,
           size: 50.0,
         ),
-      )
+      ),
     );
   }
 }
