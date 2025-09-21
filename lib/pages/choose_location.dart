@@ -15,20 +15,15 @@ class _ChooseLocationState extends State<ChooseLocation> {
     return Scaffold(
       backgroundColor: Colors.grey[400],
       appBar: AppBar(
-        title: Text('Choose Location'),
-        centerTitle: true,
-        backgroundColor: Colors.blue[800],
-        elevation: 0.0,
-      ),
-      body: TextButton(
-        onPressed: () {},
-        child: Text('Counter is suspended'),
-        style: TextButton.styleFrom(
-          backgroundColor: Colors.grey,
-          textStyle: TextStyle(
-            fontSize: 14.0,
-          )
+        title: Text(
+            'Choose a Location',
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.blue[900],
+        elevation: 0.0,
       ),
     );
   }
