@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    data = ModalRoute.of(context)?.settings.arguments as Map? ?? {};  //Taking the data arguments with a null safety check
+    data = data.isNotEmpty ? data : ModalRoute.of(context)?.settings.arguments as Map? ?? {};  //Taking the data arguments with a null safety check
     print(data);
 
     //Setting background based on the time
@@ -35,8 +35,17 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               TextButton.icon(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/location');
+                onPressed: () async {
+                  dynamic result = await Navigator.pushNamed(context, '/location');
+                  setState(() {      //Overriding the fetched(new) data with the old one
+                    data = {
+                      'time' : result['time'],
+                      'location' : result['location'],
+                      'isDayTime' : result['isDayTime'],
+                      'flag' : result['flag']
+                    };
+                    print(data);
+                  });
                 },
                 label: Text(
                     'Edit Location',
