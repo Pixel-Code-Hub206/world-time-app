@@ -30,7 +30,7 @@ class WorldTime{
      DateTime now = DateTime.parse(datetime);  //A much neater dateTime format
      // now = now.add(Duration(hours: 0)); //No affect unless offset is required
 
-     isDayTime = (now.hour >= 6 && now.hour <= 19) ? true : false;    //Checking the time before making it more readable
+     isDayTime = (now.hour >= 6 && now.hour < 19) ? true : false;    //Checking the time before making it more readable
      time = DateFormat.jm().format(now);  //Setting the time property in a readable format
    }
    catch(e)
