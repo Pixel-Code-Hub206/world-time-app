@@ -77,11 +77,14 @@ class _HomeState extends State<Home> {
               ),
               SizedBox(height: 10.0),
         
-              Text(
-                data['time'],
-                style: TextStyle(
-                  fontSize: 64.0,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Text(
+                  data['time'],
+                  style: TextStyle(
+                    fontSize: 64.0,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
